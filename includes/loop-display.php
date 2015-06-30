@@ -11,6 +11,7 @@ $initial_id = avia_get_the_ID();
 
 // check if we got posts to display:
 if (have_posts()) :
+        echo '<div id="slideshow">';
 
 	while (have_posts()) : the_post();
 
@@ -50,6 +51,7 @@ if (have_posts()) :
 	
 	
 	$current_post['title']   	= get_the_title();
+        $current_post['content']      = get_the_content();
 	$current_post['content'] 	= $blog_content == "content" ? get_the_content(__('Read more','avia_framework').'<span class="more-link-arrow">  &rarr;</span>') : get_the_excerpt();
 	$current_post['content'] 	= $blog_content == "excerpt_read_more" ? $current_post['content'].'<div class="read-more-link"><a href="'.get_permalink().'" class="more-link">'.__('Read more','avia_framework').'<span class="more-link-arrow">  &rarr;</span></a></div>' : $current_post['content'];
 	$current_post['before_content'] = "";
@@ -64,7 +66,7 @@ if (have_posts()) :
      */
      
     
-	$current_post['content'] = str_replace(']]>', ']]&gt;', apply_filters('the_content', $current_post['content'] ));
+	//$current_post['content'] = str_replace(']]>', ']]&gt;', apply_filters('the_content', $current_post['content'] ));
 
 	/*
 	 * Now extract the variables so that $current_post['slider'] becomes $slider, $current_post['title'] becomes $title, etc
@@ -82,7 +84,7 @@ if (have_posts()) :
 	 * render the html:
 	 */
 
-	echo "<article class='".implode(" ", get_post_class('post-entry post-entry-type-'.$post_format . " " . $post_class . " ".$with_slider))."' ".avia_markup_helper(array('context' => 'entry','echo'=>false)).">";
+	echo "<div class='".implode(" ", get_post_class('post-entry post-entry-type-'.$post_format . " " . $post_class . " ".$with_slider))."' ".avia_markup_helper(array('context' => 'entry','echo'=>false)).">";
 
         //default link for preview images
         $link = !empty($url) ? $url : get_permalink();
@@ -234,10 +236,11 @@ if (have_posts()) :
         echo "<div class='post_delimiter'></div>";
         echo "</div>";
         echo "<div class='post_author_timeline'></div>";
-	echo "</article>";
+	echo "</div>";
 
 	$post_loop_count++;
 	endwhile;
+        echo '</div>';
 	else:
 
 ?>
