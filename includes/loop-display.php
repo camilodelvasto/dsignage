@@ -30,6 +30,11 @@ if (have_posts()) :
 	$current_post['post_format'] 	= get_post_format() ? get_post_format() : 'standard';
 	$current_post['post_layout']	= avia_layout_class('main', false);
 	$blog_content = !empty($avia_config['blog_content']) ? $avia_config['blog_content'] : "content";
+
+    //get the duration for this slide
+    $post_custom_fields= pods('post', get_the_ID());
+    $duration = $post_custom_fields->display('ds_duration');
+
 	
 	/*If post uses builder change content to exerpt on overview pages*/
     if(AviaHelper::builder_status($current_post['the_id']) && !is_singular($current_post['the_id']) && $current_post['post_type'] == 'post')
@@ -84,7 +89,7 @@ if (have_posts()) :
 	 * render the html:
 	 */
 
-	echo "<div class='".implode(" ", get_post_class('post-entry post-entry-type-'.$post_format . " " . $post_class . " ".$with_slider))."' ".avia_markup_helper(array('context' => 'entry','echo'=>false)).">";
+	echo "<div data-duration='".$duration."' class='".implode(" ", get_post_class('post-entry post-entry-type-'.$post_format . " " . $post_class . " ".$with_slider))."' ".avia_markup_helper(array('context' => 'entry','echo'=>false)).">";
 
         //default link for preview images
         $link = !empty($url) ? $url : get_permalink();
