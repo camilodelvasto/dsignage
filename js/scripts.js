@@ -1,5 +1,6 @@
 (function($){
 	$(document).ready(function(){
+		$("body").fadeIn(500);
 		$("#slideshow").css('height', $(window).height()-220);
 		$("#slideshow > div:gt(0)").hide();
 
@@ -14,16 +15,17 @@
 		  if($('#slideshow > div:first').data('identifier') == 1) {
 		  	var loopcounter = $('#slideshow').data('loopcounter')+1;
 		  	$( "#slideshow" ).data( "loopcounter", loopcounter );
-		  	if(loopcounter==10) {
+		  	if(loopcounter==1) {
 		  		location.reload();
+				$('#slideshow > div:first').fadeOut(100).delay(3000);
 			  	return;
 			  }
 		  }
 		  //run slideshow and call this function again using the duration as interval of time
 		  $('#slideshow > div:first')
-		    .fadeOut(1000)
+		    .fadeOut(100)
 		    .next()
-		    .fadeIn(10)
+		    .fadeIn(500)
 		    .end()
 		    .appendTo('#slideshow');
 		    dslideInterval();
