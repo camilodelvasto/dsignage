@@ -11,6 +11,16 @@ $initial_id = avia_get_the_ID();
 
 // check if we got posts to display:
 if (have_posts()) :
+
+?>
+<div id="buttons-fullscreen">
+    <button id="view-fullscreen">Fullscreen</button>
+    <button id="cancel-fullscreen">Cancel fullscreen</button>
+    <button id="reload-page">Reload entries</button>
+</div>
+
+<?php
+
         echo '<div id="slideshow" data-loopcounter=0>';
         $identifier = $wp_query->post_count;
 

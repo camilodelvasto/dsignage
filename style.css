@@ -45,3 +45,56 @@ footer {
 	bottom: 0;
 	width: 100%;
 }
+
+/* Fullscreen Controls */
+#buttons-fullscreen {
+  position: fixed;
+  padding: 10px;
+  top: 10px;
+  left: 10px;
+  z-index: 1000000;
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  opacity: 0.00;
+}
+#buttons-fullscreen:hover {
+  opacity: 1;
+}
+#buttons-fullscreen button:hover {
+  opacity: 1;
+  cursor:pointer !important;
+}
+button {
+  padding: 5px 10px;
+  font-family: Lucida grande,lucida sans,helvetica,arial;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.9);
+  border: none;
+  color: #fff;
+  display: block;
+}
+button:hover {
+  background: rgba(255, 0, 0, 0.8);
+}
+body .tparrows {
+  display: none;
+}
+/* we are on Fullscreen */
+html:-moz-full-screen #buttons-fullscreen {
+  opacity: 0.00;
+}
+html:-moz-full-screen #buttons-fullscreen:hover {
+  opacity: 1;
+}
+html:-webkit-full-screen #buttons-fullscreen {
+  opacity: 0.00;
+}
+html:-webkit-full-screen #buttons-fullscreen:hover {
+  opacity: 1;
+}
+html:fullscreen #buttons-fullscreen {
+  opacity: 0.00;
+}
+html:fullscreen #buttons-fullscreen:hover {
+  opacity: 1;
+}

@@ -36,8 +36,63 @@
 
 		function methodToFixLayout(){
 			$("#slideshow").css('height', $(window).height()-220);
-			console.log("New height:"+$(window).height());
 		}
 
+		$("reload-page").click( function(){
+			location.reload();
+		});
 	});
 })(jQuery);
+
+    var viewFullScreen = document.getElementById("view-fullscreen");
+    if (viewFullScreen) {
+        viewFullScreen.addEventListener("click", function () {
+            var docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen();
+				$("body").css("overflow", "hidden");
+            }
+            else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+				$("body").css("overflow", "hidden");
+            }
+            else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+				$("body").css("overflow", "hidden");
+            }
+        }, false);
+    }
+
+    var cancelFullScreen = document.getElementById("cancel-fullscreen");
+    if (cancelFullScreen) {
+        cancelFullScreen.addEventListener("click", function () {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+				$("body").css("overflow", "scroll");
+            }
+            else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+				$("body").css("overflow", "scroll");
+            }
+            else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+				$("body").css("overflow", "scroll");
+            }
+        }, false);
+    }
+
+
+    var fullscreenState = document.getElementById("fullscreen-state");
+    if (fullscreenState) {
+        document.addEventListener("fullscreenchange", function () {
+            fullscreenState.innerHTML = (document.fullscreenElement)? "" : "not ";
+        }, false);
+        
+        document.addEventListener("mozfullscreenchange", function () {
+            fullscreenState.innerHTML = (document.mozFullScreen)? "" : "not ";
+        }, false);
+        
+        document.addEventListener("webkitfullscreenchange", function () {
+            fullscreenState.innerHTML = (document.webkitIsFullScreen)? "" : "not ";
+        }, false);
+    }
