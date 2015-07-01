@@ -11,7 +11,10 @@ $initial_id = avia_get_the_ID();
 
 // check if we got posts to display:
 if (have_posts()) :
-        echo '<div id="slideshow">';
+        echo '<div id="slideshow" data-loopcounter=0>';
+        $identifier = $wp_query->post_count;
+
+
 
 	while (have_posts()) : the_post();
 
@@ -31,9 +34,9 @@ if (have_posts()) :
 	$current_post['post_layout']	= avia_layout_class('main', false);
 	$blog_content = !empty($avia_config['blog_content']) ? $avia_config['blog_content'] : "content";
 
-    //get the duration for this slide
-    $post_custom_fields= pods('post', get_the_ID());
-    $duration = $post_custom_fields->display('ds_duration');
+        //get the duration for this slide
+        $post_custom_fields= pods('post', get_the_ID());
+        $duration = $post_custom_fields->display('ds_duration');
 
 	
 	/*If post uses builder change content to exerpt on overview pages*/
@@ -89,7 +92,7 @@ if (have_posts()) :
 	 * render the html:
 	 */
 
-	echo "<div data-duration='".$duration."' class='".implode(" ", get_post_class('post-entry post-entry-type-'.$post_format . " " . $post_class . " ".$with_slider))."' ".avia_markup_helper(array('context' => 'entry','echo'=>false)).">";
+	echo "<div data-duration='".$duration."' data-identifier='".$identifier."'class='".implode(" ", get_post_class('post-entry post-entry-type-'.$post_format . " " . $post_class . " ".$with_slider))."' ".avia_markup_helper(array('context' => 'entry','echo'=>false)).">";
 
         //default link for preview images
         $link = !empty($url) ? $url : get_permalink();
@@ -244,6 +247,7 @@ if (have_posts()) :
 	echo "</div>";
 
 	$post_loop_count++;
+        $identifier--;
 	endwhile;
         echo '</div>';
 	else:
