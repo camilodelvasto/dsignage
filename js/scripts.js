@@ -4,7 +4,7 @@
 		$("#slideshow").css('height', $(window).height()-220);
 		$("#slideshow > div:gt(0)").hide();
 
-		var startLoop = dslideInterval(); 	
+		if(!$(".tax-displaycategories").length == 0) var startLoop = dslideInterval(); 	
 
 		function dslideInterval(){
 			setTimeout(dslide,$('#slideshow > div:first').data('duration')*1000);
@@ -15,7 +15,7 @@
 		  if($('#slideshow > div:first').data('identifier') == 1) {
 		  	var loopcounter = $('#slideshow').data('loopcounter')+1;
 		  	$( "#slideshow" ).data( "loopcounter", loopcounter );
-		  	if(loopcounter==1) {
+		  	if(loopcounter==10) {
 		  		location.reload();
 				$('#slideshow > div:first').fadeOut(100).delay(3000);
 			  	return;
@@ -43,56 +43,3 @@
 		});
 	});
 })(jQuery);
-
-    var viewFullScreen = document.getElementById("view-fullscreen");
-    if (viewFullScreen) {
-        viewFullScreen.addEventListener("click", function () {
-            var docElm = document.documentElement;
-            if (docElm.requestFullscreen) {
-                docElm.requestFullscreen();
-				$("body").css("overflow", "hidden");
-            }
-            else if (docElm.mozRequestFullScreen) {
-                docElm.mozRequestFullScreen();
-				$("body").css("overflow", "hidden");
-            }
-            else if (docElm.webkitRequestFullScreen) {
-                docElm.webkitRequestFullScreen();
-				$("body").css("overflow", "hidden");
-            }
-        }, false);
-    }
-
-    var cancelFullScreen = document.getElementById("cancel-fullscreen");
-    if (cancelFullScreen) {
-        cancelFullScreen.addEventListener("click", function () {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-				$("body").css("overflow", "scroll");
-            }
-            else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-				$("body").css("overflow", "scroll");
-            }
-            else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-				$("body").css("overflow", "scroll");
-            }
-        }, false);
-    }
-
-
-    var fullscreenState = document.getElementById("fullscreen-state");
-    if (fullscreenState) {
-        document.addEventListener("fullscreenchange", function () {
-            fullscreenState.innerHTML = (document.fullscreenElement)? "" : "not ";
-        }, false);
-        
-        document.addEventListener("mozfullscreenchange", function () {
-            fullscreenState.innerHTML = (document.mozFullScreen)? "" : "not ";
-        }, false);
-        
-        document.addEventListener("webkitfullscreenchange", function () {
-            fullscreenState.innerHTML = (document.webkitIsFullScreen)? "" : "not ";
-        }, false);
-    }
