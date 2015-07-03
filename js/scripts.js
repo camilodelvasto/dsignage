@@ -38,8 +38,5 @@
 			$("#slideshow").css('height', $(window).height()-220);
 		}
 
-		$("reload-page").click( function(){
-			location.reload();
-		});
 	});
 })(jQuery);
