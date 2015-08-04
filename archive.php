@@ -6,6 +6,8 @@
 	 */
 	 get_header();
 	
+        if (!is_tax( 'displaycategories' )) {
+
 		
 		$showheader = true;
 		if(avia_get_option('frontpage') && $blogpage_id = avia_get_option('blogpage'))
@@ -69,8 +71,7 @@
 
                         $more = 0;
 
-                        if (is_tax( 'displaycategories' )) get_template_part( 'includes/loop', 'display' );
-                        else get_template_part( 'includes/loop', 'index' );
+                        get_template_part( 'includes/loop', 'index' );
 
                     }
                     ?>
@@ -90,7 +91,9 @@
 
 		</div><!-- close default .container_wrap element -->
 
-
-
-
+<?php
+        } else {
+            get_template_part( 'includes/loop', 'display' );
+        }
+?>
 <?php get_footer(); ?>

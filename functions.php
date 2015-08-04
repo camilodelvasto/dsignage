@@ -73,4 +73,7 @@ if(!function_exists('dsignage_register_frontend_scripts'))
 	}
 }
 
+global $avia_config;
+//$avia_config['builder_redirect_id'] = 0;
+
 ?>

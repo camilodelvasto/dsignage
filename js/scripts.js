@@ -1,7 +1,7 @@
 (function($){
 	$(document).ready(function(){
 		$("body").fadeIn(500);
-		$("#slideshow").css('height', $(window).height()-220);
+		$("#slideshow").css('height', $(window).height());
 		$("#slideshow > div:gt(0)").hide();
 
 		if(!$(".tax-displaycategories").length == 0) var startLoop = dslideInterval(); 	
