@@ -33,7 +33,7 @@ body{
 	}
 
 #slideshow > div.dsignage-slide { 
-	position: absolute; 
+	position: static; 
    width: 100%;
 }
 
