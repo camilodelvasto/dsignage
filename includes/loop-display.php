@@ -131,20 +131,12 @@ if (have_posts()) :
         echo "</div>";
         echo "</div>$cm <!-- section close by builder template -->";
 
-        //get the sidebar
-        if (is_singular('post')) {
-            $avia_config['currently_viewing'] = 'blog';
-        }else{
-            $avia_config['currently_viewing'] = 'page';
-        }
-        get_sidebar();
     }
     else
     {
         echo "<div><div>";
         
     }
-            echo '</div>';
 
 echo avia_sc_section::$close_overlay;
 echo '      </div><!--end builder template-->';
@@ -177,3 +169,4 @@ echo '</div><!-- close default .container_wrap element -->';
 		echo "<div class='{$blog_style}'>".avia_pagination('', 'nav')."</div>";
 	}
 ?>
+</div>
