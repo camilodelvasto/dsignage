@@ -141,7 +141,7 @@ if (have_posts()) :
 echo avia_sc_section::$close_overlay;
 echo '      </div><!--end builder template-->';
 echo '</div><!-- close default .container_wrap element -->';
-
+echo '</div>';
 	$post_loop_count++;
         $identifier--;
 	endwhile;
