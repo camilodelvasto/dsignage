@@ -73,13 +73,23 @@ if(!function_exists('dsignage_register_frontend_scripts'))
 	}
 }
 
+// remove selected avia elements from builder
 function enfold_customization_admin_css() {
 	echo "<style>
 				a[href='#avia_sc_contact'] { display: none; }
 				a[href='#avia_sc_tab'] { display: none; }
 				a[href='#avia_sc_toggle'] { display: none; }
 				a[href='#avia_sc_comments_list'] { display: none; }
-				a[href='#avia_sc_codeblock'] { display: none; }
 			</style>";
 }
 add_action( 'admin_head', 'enfold_customization_admin_css' );
+
+// add own shortcode
+add_filter('avia_load_shortcodes', 'avia_include_shortcode_template', 15, 1);
+function avia_include_shortcode_template($paths)
+{
+	$template_url = get_stylesheet_directory();
+    	array_unshift($paths, $template_url.'/shortcodes/');
+
+	return $paths;
+}

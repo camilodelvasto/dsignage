@@ -1,7 +1,6 @@
 <?php
 
-global $avia_config, $post_loop_count;
-global $avia_config, $post;
+global $avia_config, $post_loop_count, $post;
 
 
 if(empty($post_loop_count)) $post_loop_count = 1;
@@ -19,6 +18,8 @@ if (have_posts()) :
 
 
 	while (have_posts()) : the_post();
+
+
     /*
      * get the current post id, the current post class and current post format
      */
@@ -145,8 +146,9 @@ if (have_posts()) :
     }
             echo '</div>';
 
-        echo "</div>";
-	echo "</div>";
+echo avia_sc_section::$close_overlay;
+echo '      </div><!--end builder template-->';
+echo '</div><!-- close default .container_wrap element -->';
 
 	$post_loop_count++;
         $identifier--;
