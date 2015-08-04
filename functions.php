@@ -81,4 +81,3 @@ function enfold_customization_admin_css() {
 }
 
 
-?>
