@@ -32,8 +32,9 @@ body{
 	height: 100px;
 	}
 
-#slideshow > div { 
+#slideshow > div.dsignage-slide { 
 	position: absolute; 
+   width: 100%;
 }
 
 #top.tax-displaycategories #main{
