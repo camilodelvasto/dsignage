@@ -73,11 +73,9 @@ if(!function_exists('dsignage_register_frontend_scripts'))
 	}
 }
 
-add_action( 'admin_menu', 'enfold_customization_admin_css' );
 function enfold_customization_admin_css() {
 	echo '<style type = "text/css">';
 	echo 'a[href="#avia_sc_contact"] { display: none; }';
 	echo '</style>';
 }
-
-
+add_action( 'admin_menu', 'enfold_customization_admin_css' );
