@@ -15,10 +15,10 @@ body{
 }
 
 .container{
-  padding: 0 !important;
+  padding: 0;
 }
 .content{
-  padding: 0 !important;
+  padding: 0;
 }
 
 .flex_column{
