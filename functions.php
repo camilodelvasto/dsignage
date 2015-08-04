@@ -73,7 +73,12 @@ if(!function_exists('dsignage_register_frontend_scripts'))
 	}
 }
 
-global $avia_config;
-//$avia_config['builder_redirect_id'] = 0;
+add_action( 'admin_menu', 'enfold_customization_admin_css' );
+function enfold_customization_admin_css() {
+	echo '<style type = "text/css">';
+	echo 'a[href="#avia_sc_contact"] { display: none; }';
+	echo '</style>';
+}
+
 
 ?>
