@@ -11,8 +11,10 @@
  Text Domain:  dsignage
 */
 
-body{
-	display:none;
+#dsignage-overlay{
+  width:100%;
+  height: 100%;
+  background: #fff;
 }
 
 .container{

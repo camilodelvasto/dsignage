@@ -13,6 +13,7 @@ $initial_id = avia_get_the_ID();
 if (have_posts()) :
 
         echo '<div id="slideshow" data-loopcounter=0>';
+        echo '<div id="dsignage-overlay"></div>';
         $identifier = $wp_query->post_count;
 
 
