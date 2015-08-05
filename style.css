@@ -26,6 +26,10 @@ body{
   padding:5%;
 }
 
+.avia-google-map-container img {
+  max-width: none;
+}
+
 #slideshow { 
 	position: relative; 
 	width: 100%; 
