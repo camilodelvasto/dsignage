@@ -38,5 +38,22 @@
 			$("#slideshow").css('height', $(window).height()-220);
 		}
 
+		function displayMap() {
+                    document.getElementById('map_canvas').style.display="block";
+                    initialize();
+                }
+	     function initialize() {
+	              // create the map
+
+	            var myOptions = {
+	                zoom: 14,
+	                center: new google.maps.LatLng(0.0, 0.0),
+	                mapTypeId: google.maps.MapTypeId.ROADMAP
+	              }
+	                map = new google.maps.Map(document.getElementById("map_canvas"),
+	                                            myOptions);
+
+	             }
+
 	});
 })(jQuery);
